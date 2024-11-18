@@ -1,0 +1,34 @@
+# The output files per gene from YN00 were grouped in three directories according to position: autosome, pseudoautosomal (PAR) and Z-specific. In each directory we run the following script to extract the dn/ds, dn, and ds values per gene for each species and create a common table:
+
+cat yn* > all_yn_dn_ds_autosome.txt &&
+cat all_yn_dn_ds_autosome.txt | grep -e '^brth_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_brth_yn_dn_ds_autosome.txt &&
+cat all_yn_dn_ds_autosome.txt | grep -e '^fpa_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fpa_yn_dn_ds_autosome.txt &&
+cat all_yn_dn_ds_autosome.txt | grep -e '^fubi_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fubi_yn_dn_ds_autosome.txt &&
+cat all_yn_dn_ds_autosome.txt | grep -e '^fula_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fula_yn_dn_ds_autosome.txt &&
+cat all_yn_dn_ds_autosome.txt | grep -e '^fuwi_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fuwi_yn_dn_ds_autosome.txt &&
+cat all_yn_dn_ds_autosome.txt | grep -e '^trjo_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_trjo_yn_dn_ds_autosome.txt &&
+paste all_brth_yn_dn_ds_autosome.txt all_trjo_yn_dn_ds_autosome.txt all_fpa_yn_dn_ds_autosome.txt all_fubi_yn_dn_ds_autosome.txt all_fula_yn_dn_ds_autosome.txt all_fuwi_yn_dn_ds_autosome.txt | sed 's/\r//'> merged_YNOO_calculations_for_autosomal_genes.txt
+
+cat yn* > all_yn_dn_ds_Z-specific.txt &&
+cat all_yn_dn_ds_Z-specific.txt | grep -e '^brth_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_brth_yn_dn_ds_Z-specific.txt &&
+cat all_yn_dn_ds_Z-specific.txt | grep -e '^fpa_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fpa_yn_dn_ds_Z-specific.txt &&
+cat all_yn_dn_ds_Z-specific.txt | grep -e '^fubi_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fubi_yn_dn_ds_Z-specific.txt &&
+cat all_yn_dn_ds_Z-specific.txt | grep -e '^fula_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fula_yn_dn_ds_Z-specific.txt &&
+cat all_yn_dn_ds_Z-specific.txt | grep -e '^fuwi_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fuwi_yn_dn_ds_Z-specific.txt &&
+cat all_yn_dn_ds_Z-specific.txt | grep -e '^trjo_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_trjo_yn_dn_ds_Z-specific.txt &&
+paste all_brth_yn_dn_ds_Z-specific.txt all_trjo_yn_dn_ds_Z-specific.txt all_fpa_yn_dn_ds_Z-specific.txt all_fubi_yn_dn_ds_Z-specific.txt all_fula_yn_dn_ds_Z-specific.txt all_fuwi_yn_dn_ds_Z-specific.txt | sed 's/\r//'> merged_YNOO_calculations_for_Z-specific_genes.txt
+
+
+cat yn* > all_yn_dn_ds_PAR.txt &&
+cat all_yn_dn_ds_PAR.txt | grep -e '^brth_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_brth_yn_dn_ds_PAR.txt &&
+cat all_yn_dn_ds_PAR.txt | grep -e '^fpa_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fpa_yn_dn_ds_PAR.txt &&
+cat all_yn_dn_ds_PAR.txt | grep -e '^fubi_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fubi_yn_dn_ds_PAR.txt &&
+cat all_yn_dn_ds_PAR.txt | grep -e '^fula_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fula_yn_dn_ds_PAR.txt &&
+cat all_yn_dn_ds_PAR.txt | grep -e '^fuwi_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_fuwi_yn_dn_ds_PAR.txt &&
+cat all_yn_dn_ds_PAR.txt | grep -e '^trjo_' | sed 's/ /\t/g' | sed 's/-1/\t-1/g' | sed 's/\(\t\)\s\+\1/\1/g' | grep -E '\(' | cut -f1,2,3,4 | sed 's/[()]//g' | sort > all_trjo_yn_dn_ds_PAR.txt &&
+paste all_brth_yn_dn_ds_PAR.txt all_trjo_yn_dn_ds_PAR.txt all_fpa_yn_dn_ds_PAR.txt all_fubi_yn_dn_ds_PAR.txt all_fula_yn_dn_ds_PAR.txt all_fuwi_yn_dn_ds_PAR.txt | sed 's/\r//'> merged_YNOO_calculations_for_PAR_genes.txt
+
+
+
+
+
